@@ -8,8 +8,9 @@ typedef RestoreFunction<T> = Future<void> Function();
 /// To generate updated model code, run:
 /// flutter pub run build_runner build
 @freezed
-class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
+class MaybeDoc<T> with _$MaybeDoc<T> {
   const MaybeDoc._();
+
   @With.fromString('CastExtension<T>')
   const factory MaybeDoc({
     required DocumentReference<T> reference,
@@ -19,24 +20,24 @@ class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
   @With.fromString('NullableExtension<T>')
   const factory MaybeDoc.unsaved({required T data}) = UnsavedDoc<T>;
 
-  static Doc<T?> fromSnapshot<T>(DocumentSnapshot<T?> snapshot) {
-    return Doc<T?>(
+  static Doc<R?> fromSnapshot<R>(DocumentSnapshot<R?> snapshot) {
+    return Doc<R?>(
       data: snapshot.data(),
       reference: snapshot.reference,
     );
   }
 
-  static Doc<T> fromSnapshotForce<T>(DocumentSnapshot<T> snapshot) {
+  static Doc<R> fromSnapshotForce<R>(DocumentSnapshot<R> snapshot) {
     assert(snapshot.exists);
 
-    return Doc<T>(
+    return Doc<R>(
       data: snapshot.data()!,
       reference: snapshot.reference,
     );
   }
 
-  static Doc<T> fromQuerySnapshot<T>(QueryDocumentSnapshot<T> snapshot) {
-    return Doc<T>(
+  static Doc<R> fromQuerySnapshot<R>(QueryDocumentSnapshot<R> snapshot) {
+    return Doc<R>(
       data: snapshot.data(),
       reference: snapshot.reference,
     );
@@ -100,7 +101,7 @@ class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
       );
 }
 
-mixin NullableExtension<T extends Object?> on MaybeDoc<T> {
+mixin NullableExtension<T> on MaybeDoc<T> {
   Future<Doc<T>> commit(DocumentReference<T> reference) async {
     await reference.set(data);
 
@@ -111,7 +112,7 @@ mixin NullableExtension<T extends Object?> on MaybeDoc<T> {
   }
 }
 
-mixin CastExtension<T extends Object?> on MaybeDoc<T> {
+mixin CastExtension<T> on MaybeDoc<T> {
   Doc<R> cast<R extends T>({
     required R data,
     required FromFirestore<R> fromFirestore,

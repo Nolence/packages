@@ -16,15 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MaybeDocTearOff {
   const _$MaybeDocTearOff();
 
-  Doc<T> call<T extends Object?>(
-      {required DocumentReference<T> reference, required T data}) {
+  Doc<T> call<T>({required DocumentReference<T> reference, required T data}) {
     return Doc<T>(
       reference: reference,
       data: data,
     );
   }
 
-  UnsavedDoc<T> unsaved<T extends Object?>({required T data}) {
+  UnsavedDoc<T> unsaved<T>({required T data}) {
     return UnsavedDoc<T>(
       data: data,
     );
@@ -35,7 +34,7 @@ class _$MaybeDocTearOff {
 const $MaybeDoc = _$MaybeDocTearOff();
 
 /// @nodoc
-mixin _$MaybeDoc<T extends Object?> {
+mixin _$MaybeDoc<T> {
   T get data => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -71,7 +70,7 @@ mixin _$MaybeDoc<T extends Object?> {
 }
 
 /// @nodoc
-abstract class $MaybeDocCopyWith<T extends Object?, $Res> {
+abstract class $MaybeDocCopyWith<T, $Res> {
   factory $MaybeDocCopyWith(
           MaybeDoc<T> value, $Res Function(MaybeDoc<T>) then) =
       _$MaybeDocCopyWithImpl<T, $Res>;
@@ -79,8 +78,7 @@ abstract class $MaybeDocCopyWith<T extends Object?, $Res> {
 }
 
 /// @nodoc
-class _$MaybeDocCopyWithImpl<T extends Object?, $Res>
-    implements $MaybeDocCopyWith<T, $Res> {
+class _$MaybeDocCopyWithImpl<T, $Res> implements $MaybeDocCopyWith<T, $Res> {
   _$MaybeDocCopyWithImpl(this._value, this._then);
 
   final MaybeDoc<T> _value;
@@ -101,8 +99,7 @@ class _$MaybeDocCopyWithImpl<T extends Object?, $Res>
 }
 
 /// @nodoc
-abstract class $DocCopyWith<T extends Object?, $Res>
-    implements $MaybeDocCopyWith<T, $Res> {
+abstract class $DocCopyWith<T, $Res> implements $MaybeDocCopyWith<T, $Res> {
   factory $DocCopyWith(Doc<T> value, $Res Function(Doc<T>) then) =
       _$DocCopyWithImpl<T, $Res>;
   @override
@@ -110,8 +107,8 @@ abstract class $DocCopyWith<T extends Object?, $Res>
 }
 
 /// @nodoc
-class _$DocCopyWithImpl<T extends Object?, $Res>
-    extends _$MaybeDocCopyWithImpl<T, $Res> implements $DocCopyWith<T, $Res> {
+class _$DocCopyWithImpl<T, $Res> extends _$MaybeDocCopyWithImpl<T, $Res>
+    implements $DocCopyWith<T, $Res> {
   _$DocCopyWithImpl(Doc<T> _value, $Res Function(Doc<T>) _then)
       : super(_value, (v) => _then(v as Doc<T>));
 
@@ -139,7 +136,7 @@ class _$DocCopyWithImpl<T extends Object?, $Res>
 /// @nodoc
 
 @With.fromString('CastExtension<T>')
-class _$Doc<T extends Object?> extends Doc<T> with CastExtension<T> {
+class _$Doc<T> extends Doc<T> with CastExtension<T> {
   const _$Doc({required this.reference, required this.data}) : super._();
 
   @override
@@ -219,8 +216,7 @@ class _$Doc<T extends Object?> extends Doc<T> with CastExtension<T> {
   }
 }
 
-abstract class Doc<T extends Object?> extends MaybeDoc<T>
-    implements CastExtension<T> {
+abstract class Doc<T> extends MaybeDoc<T> implements CastExtension<T> {
   const factory Doc(
       {required DocumentReference<T> reference, required T data}) = _$Doc<T>;
   const Doc._() : super._();
@@ -234,7 +230,7 @@ abstract class Doc<T extends Object?> extends MaybeDoc<T>
 }
 
 /// @nodoc
-abstract class $UnsavedDocCopyWith<T extends Object?, $Res>
+abstract class $UnsavedDocCopyWith<T, $Res>
     implements $MaybeDocCopyWith<T, $Res> {
   factory $UnsavedDocCopyWith(
           UnsavedDoc<T> value, $Res Function(UnsavedDoc<T>) then) =
@@ -244,8 +240,7 @@ abstract class $UnsavedDocCopyWith<T extends Object?, $Res>
 }
 
 /// @nodoc
-class _$UnsavedDocCopyWithImpl<T extends Object?, $Res>
-    extends _$MaybeDocCopyWithImpl<T, $Res>
+class _$UnsavedDocCopyWithImpl<T, $Res> extends _$MaybeDocCopyWithImpl<T, $Res>
     implements $UnsavedDocCopyWith<T, $Res> {
   _$UnsavedDocCopyWithImpl(
       UnsavedDoc<T> _value, $Res Function(UnsavedDoc<T>) _then)
@@ -270,8 +265,7 @@ class _$UnsavedDocCopyWithImpl<T extends Object?, $Res>
 /// @nodoc
 
 @With.fromString('NullableExtension<T>')
-class _$UnsavedDoc<T extends Object?> extends UnsavedDoc<T>
-    with NullableExtension<T> {
+class _$UnsavedDoc<T> extends UnsavedDoc<T> with NullableExtension<T> {
   const _$UnsavedDoc({required this.data}) : super._();
 
   @override
@@ -344,7 +338,7 @@ class _$UnsavedDoc<T extends Object?> extends UnsavedDoc<T>
   }
 }
 
-abstract class UnsavedDoc<T extends Object?> extends MaybeDoc<T>
+abstract class UnsavedDoc<T> extends MaybeDoc<T>
     implements NullableExtension<T> {
   const factory UnsavedDoc({required T data}) = _$UnsavedDoc<T>;
   const UnsavedDoc._() : super._();
