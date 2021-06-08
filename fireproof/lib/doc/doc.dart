@@ -113,7 +113,7 @@ mixin NullableExtension<T> on MaybeDoc<T> {
 }
 
 mixin CastExtension<T> on MaybeDoc<T> {
-  Doc<R> cast<R extends T>({
+  Doc<R> cast<R>({
     required R data,
     required FromFirestore<R> fromFirestore,
     required ToFirestore<R> toFirestore,
