@@ -1,0 +1,19 @@
+name: firebase_storage_ui
+description: Provides a UI wrapper around common firebase_storage admin functionality such as uploading, deleting and viewing files
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_storage: ^8.1.1
+  mime: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
