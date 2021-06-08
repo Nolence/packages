@@ -138,7 +138,8 @@ class _$DocCopyWithImpl<T extends Object?, $Res>
 
 /// @nodoc
 
-class _$Doc<T extends Object?> extends Doc<T> {
+@With.fromString('CastExtension<T>')
+class _$Doc<T extends Object?> extends Doc<T> with CastExtension<T> {
   const _$Doc({required this.reference, required this.data}) : super._();
 
   @override
@@ -218,7 +219,8 @@ class _$Doc<T extends Object?> extends Doc<T> {
   }
 }
 
-abstract class Doc<T extends Object?> extends MaybeDoc<T> {
+abstract class Doc<T extends Object?> extends MaybeDoc<T>
+    implements CastExtension<T> {
   const factory Doc(
       {required DocumentReference<T> reference, required T data}) = _$Doc<T>;
   const Doc._() : super._();

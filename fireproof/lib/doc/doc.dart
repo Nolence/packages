@@ -10,6 +10,7 @@ typedef RestoreFunction<T> = Future<void> Function();
 @freezed
 class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
   const MaybeDoc._();
+  @With.fromString('CastExtension<T>')
   const factory MaybeDoc({
     required DocumentReference<T> reference,
     required T data,
@@ -97,7 +98,20 @@ class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
           );
         },
       );
+}
 
+mixin NullableExtension<T extends Object?> on MaybeDoc<T> {
+  Future<Doc<T>> commit(DocumentReference<T> reference) async {
+    await reference.set(data);
+
+    return Doc(
+      data: data,
+      reference: reference,
+    );
+  }
+}
+
+mixin CastExtension<T extends Object?> on MaybeDoc<T> {
   Doc<R> cast<R extends T>({
     required R data,
     required FromFirestore<R> fromFirestore,
@@ -118,17 +132,6 @@ class MaybeDoc<T extends Object?> with _$MaybeDoc<T> {
           'You cannot cast a null reference to a non-null version',
         );
       },
-    );
-  }
-}
-
-mixin NullableExtension<T extends Object?> on MaybeDoc<T> {
-  Future<Doc<T>> commit(DocumentReference<T> reference) async {
-    await reference.set(data);
-
-    return Doc(
-      data: data,
-      reference: reference,
     );
   }
 }
