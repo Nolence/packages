@@ -3,14 +3,17 @@ import 'package:linkfo/linkfo.dart';
 import 'package:linkfo/src/models/page_info/page_info.dart';
 
 class AmazonScraper extends Scraper {
-  const AmazonScraper(Document doc) : super(doc);
+  const AmazonScraper(Document doc, String url) : super(doc, url);
 
   static final regex = RegExp(
     r'https?:\/\/(.*amazon\..*\/.*|.*amzn\..*\/.*|.*a\.co\/.*)',
     caseSensitive: false,
   );
 
-  static bool isAmazonUrl(String url) => regex.hasMatch(url);
+  @override
+  bool meetsRequirements() {
+    return regex.hasMatch(url);
+  }
 
   @override
   AmazonInfo scrape() {

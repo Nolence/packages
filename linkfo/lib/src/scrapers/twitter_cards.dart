@@ -3,7 +3,17 @@ import 'package:linkfo/linkfo.dart';
 import 'package:linkfo/src/models/page_info/page_info.dart';
 
 class TwitterCardsScraper extends Scraper {
-  const TwitterCardsScraper(Document doc) : super(doc);
+  const TwitterCardsScraper(Document doc, String url) : super(doc, url);
+
+  @override
+  bool meetsRequirements() {
+    return [
+      getProperty('og:card'),
+      getProperty('og:title'),
+      getProperty('og:description'),
+      getProperty('og:image'),
+    ].any((e) => e != null);
+  }
 
   @override
   TwitterCardsInfo scrape() {

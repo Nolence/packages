@@ -7,65 +7,61 @@ import 'package:linkfo/src/scrapers/twitter_cards.dart';
 void main() {
   final client = http.Client();
 
-  test('parses open graph imbd link', () async {
-    const link = 'https://www.imdb.com/title/tt0117500/';
+  test('parses open graph imbd url', () async {
+    const url = 'https://www.imdb.com/title/tt0117500/';
 
-    final response = await client.get(Uri.parse(link));
+    final response = await client.get(Uri.parse(url));
 
     final doc = parse(response.body);
-    final scraper = OpenGraphScraper(doc);
+    final scraper = OpenGraphScraper(doc, url);
 
     final info = scraper.scrape();
 
-    print(info);
     expect(info.description, isNotNull);
     expect(info.image, isNotNull);
     expect(info.title, isNotNull);
   });
 
-  test('parses open graph youtube link', () async {
-    const link = 'https://www.youtube.com/watch?v=45MIykWJ-C4';
+  test('parses open graph youtube url', () async {
+    const url = 'https://www.youtube.com/watch?v=45MIykWJ-C4';
 
-    final response = await client.get(Uri.parse(link));
+    final response = await client.get(Uri.parse(url));
 
     final doc = parse(response.body);
-    final scraper = OpenGraphScraper(doc);
+    final scraper = OpenGraphScraper(doc, url);
 
     final info = scraper.scrape();
 
-    print(info);
     expect(info.description, isNotNull);
     expect(info.image, isNotNull);
     expect(info.title, isNotNull);
   });
 
-  test('parses twitter cards imbd link', () async {
-    const link = 'https://www.imdb.com/title/tt0117500/';
+  test('parses twitter cards imbd url', () async {
+    const url = 'https://www.imdb.com/title/tt0117500/';
 
-    final response = await client.get(Uri.parse(link));
+    final response = await client.get(Uri.parse(url));
 
     final doc = parse(response.body);
-    final scraper = TwitterCardsScraper(doc);
+    final scraper = TwitterCardsScraper(doc, url);
 
     final info = scraper.scrape();
 
-    print(info);
     expect(info.description, isNotNull);
     expect(info.image, isNotNull);
     expect(info.title, isNotNull);
   });
 
-  test('parses twitter cards youtube link', () async {
-    const link = 'https://www.youtube.com/watch?v=45MIykWJ-C4';
+  test('parses twitter cards youtube url', () async {
+    const url = 'https://www.youtube.com/watch?v=45MIykWJ-C4';
 
-    final response = await client.get(Uri.parse(link));
+    final response = await client.get(Uri.parse(url));
 
     final doc = parse(response.body);
-    final scraper = TwitterCardsScraper(doc);
+    final scraper = TwitterCardsScraper(doc, url);
 
     final info = scraper.scrape();
 
-    print(info);
     expect(info.description, isNotNull);
     expect(info.image, isNotNull);
     expect(info.title, isNotNull);

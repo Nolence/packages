@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:html/dom.dart';
 import 'package:linkfo/src/models/page_info/page_info.dart';
 import 'package:linkfo/src/scrapers/amazon.dart';
+import 'package:linkfo/src/scrapers/open_graph.dart';
 import 'package:linkfo/src/scrapers/twitter_cards.dart';
 import 'package:linkfo/src/utils.dart';
 
@@ -14,21 +15,36 @@ abstract class WithDoc {
 }
 
 abstract class Scraper extends WithDoc with ScrapingUtils {
-  const Scraper(Document doc) : super(doc);
+  const Scraper(Document doc, this.url) : super(doc);
+
+  final String url;
 
   String? getDefaultTitle(String url) {
     throw UnimplementedError();
   }
 
+  bool meetsRequirements();
+
   static PageInfo parse({
-    required String url,
     required Document doc,
+    required String url,
     required String mimeType,
   }) {
-    return TwitterCardsScraper(doc).scrape();
+    final openGraphScraper = OpenGraphScraper(doc, url);
+    if (openGraphScraper.meetsRequirements()) {
+      return openGraphScraper.scrape();
+    }
 
-    if (AmazonScraper.isAmazonUrl(url)) {
-      return AmazonScraper(doc).scrape();
+    final twitterCardsScraper = TwitterCardsScraper(doc, url);
+    if (twitterCardsScraper.meetsRequirements()) {
+      return twitterCardsScraper.scrape();
+    }
+
+    final amazonScraper = AmazonScraper(doc, url);
+    if (amazonScraper.meetsRequirements()) {
+      return amazonScraper.scrape();
+    } else {
+      throw UnsupportedError('Could not parse $url');
     }
   }
 

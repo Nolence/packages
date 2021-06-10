@@ -6,10 +6,11 @@ import 'package:linkfo/src/models/open_graph_video/open_graph_video.dart';
 import 'package:linkfo/src/models/page_info/page_info.dart';
 
 class OpenGraphScraper extends Scraper {
-  const OpenGraphScraper(Document doc) : super(doc);
+  const OpenGraphScraper(Document doc, String url) : super(doc, url);
 
   /// The standard defines that, at a minimum, these must be supplied
-  bool hasRequiredProperties(Document doc) {
+  @override
+  bool meetsRequirements() {
     return [
       getProperty('og:title'),
       getProperty('og:type'),
