@@ -25,11 +25,7 @@ abstract class Scraper extends WithDoc with ScrapingUtils {
 
   bool meetsRequirements();
 
-  static PageInfo parse({
-    required Document doc,
-    required String url,
-    required String mimeType,
-  }) {
+  static PageInfo parse(Document doc, String url) {
     final openGraphScraper = OpenGraphScraper(doc, url);
     if (openGraphScraper.meetsRequirements()) {
       return openGraphScraper.scrape();

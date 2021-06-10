@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Initial release holds basic functionality for open graph and twitter cards
