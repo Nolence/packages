@@ -16,14 +16,10 @@ PageInfo _$PageInfoFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType'] as String) {
     case 'openGraph':
       return OpenGraphInfo.fromJson(json);
+    case 'twitterCards':
+      return TwitterCardsInfo.fromJson(json);
     case 'amazon':
       return AmazonInfo.fromJson(json);
-    case 'boardGameGeek':
-      return BoardGameGeekInfo.fromJson(json);
-    case 'twitter':
-      return TwitterInfo.fromJson(json);
-    case 'instagram':
-      return InstagramInfo.fromJson(json);
 
     default:
       throw FallThroughError();
@@ -67,6 +63,53 @@ class _$PageInfoTearOff {
     );
   }
 
+  TwitterCardsInfo twitterCards(
+      {required String card,
+      required String? site,
+      required String? siteId,
+      required String? creator,
+      required String? creatorId,
+      required String? description,
+      required String? title,
+      required String? image,
+      required String? altImage,
+      required String? player,
+      required int? playerHeight,
+      required int? playerWidth,
+      required String? playerStream,
+      required String? iphoneAppName,
+      required String? iphoneUrl,
+      required String? ipadAppName,
+      required String? appStoreAppId,
+      required String? ipadUrl,
+      required String? androidAppName,
+      required String? playStoreAppId,
+      required String? playUrl}) {
+    return TwitterCardsInfo(
+      card: card,
+      site: site,
+      siteId: siteId,
+      creator: creator,
+      creatorId: creatorId,
+      description: description,
+      title: title,
+      image: image,
+      altImage: altImage,
+      player: player,
+      playerHeight: playerHeight,
+      playerWidth: playerWidth,
+      playerStream: playerStream,
+      iphoneAppName: iphoneAppName,
+      iphoneUrl: iphoneUrl,
+      ipadAppName: ipadAppName,
+      appStoreAppId: appStoreAppId,
+      ipadUrl: ipadUrl,
+      androidAppName: androidAppName,
+      playStoreAppId: playStoreAppId,
+      playUrl: playUrl,
+    );
+  }
+
   AmazonInfo amazon(
       {required String? title,
       required String? content,
@@ -82,55 +125,6 @@ class _$PageInfoTearOff {
     );
   }
 
-  BoardGameGeekInfo boardGameGeek(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description}) {
-    return BoardGameGeekInfo(
-      title: title,
-      content: content,
-      url: url,
-      image: image,
-      description: description,
-    );
-  }
-
-  TwitterInfo twitter(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description,
-      required List<String>? video}) {
-    return TwitterInfo(
-      title: title,
-      content: content,
-      url: url,
-      image: image,
-      description: description,
-      video: video,
-    );
-  }
-
-  InstagramInfo instagram(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description,
-      required List<String>? video}) {
-    return InstagramInfo(
-      title: title,
-      content: content,
-      url: url,
-      image: image,
-      description: description,
-      video: video,
-    );
-  }
-
   PageInfo fromJson(Map<String, Object> json) {
     return PageInfo.fromJson(json);
   }
@@ -141,7 +135,6 @@ const $PageInfo = _$PageInfoTearOff();
 
 /// @nodoc
 mixin _$PageInfo {
-  String? get url => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -162,18 +155,32 @@ mixin _$PageInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)
         openGraph,
+    required TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)
+        twitterCards,
     required TResult Function(String? title, String? content, String? url,
             String? image, String? description)
         amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -194,37 +201,47 @@ mixin _$PageInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)?
         openGraph,
+    TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)?
+        twitterCards,
     TResult Function(String? title, String? content, String? url, String? image,
             String? description)?
         amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OpenGraphInfo value) openGraph,
+    required TResult Function(TwitterCardsInfo value) twitterCards,
     required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OpenGraphInfo value)? openGraph,
+    TResult Function(TwitterCardsInfo value)? twitterCards,
     TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -238,7 +255,7 @@ mixin _$PageInfo {
 abstract class $PageInfoCopyWith<$Res> {
   factory $PageInfoCopyWith(PageInfo value, $Res Function(PageInfo) then) =
       _$PageInfoCopyWithImpl<$Res>;
-  $Res call({String? url, String? description});
+  $Res call({String? description});
 }
 
 /// @nodoc
@@ -251,14 +268,9 @@ class _$PageInfoCopyWithImpl<$Res> implements $PageInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? url = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -555,18 +567,32 @@ class _$OpenGraphInfo implements OpenGraphInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)
         openGraph,
+    required TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)
+        twitterCards,
     required TResult Function(String? title, String? content, String? url,
             String? image, String? description)
         amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
   }) {
     return openGraph(
         title,
@@ -604,18 +630,32 @@ class _$OpenGraphInfo implements OpenGraphInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)?
         openGraph,
+    TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)?
+        twitterCards,
     TResult Function(String? title, String? content, String? url, String? image,
             String? description)?
         amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
     required TResult orElse(),
   }) {
     if (openGraph != null) {
@@ -642,10 +682,8 @@ class _$OpenGraphInfo implements OpenGraphInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OpenGraphInfo value) openGraph,
+    required TResult Function(TwitterCardsInfo value) twitterCards,
     required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
   }) {
     return openGraph(this);
   }
@@ -654,10 +692,8 @@ class _$OpenGraphInfo implements OpenGraphInfo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OpenGraphInfo value)? openGraph,
+    TResult Function(TwitterCardsInfo value)? twitterCards,
     TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
     required TResult orElse(),
   }) {
     if (openGraph != null) {
@@ -695,7 +731,6 @@ abstract class OpenGraphInfo implements PageInfo, OpenGraphMetadata {
   String get title => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  @override
   String? get url => throw _privateConstructorUsedError;
   String? get audio => throw _privateConstructorUsedError;
   @override
@@ -711,6 +746,559 @@ abstract class OpenGraphInfo implements PageInfo, OpenGraphMetadata {
   @override
   @JsonKey(ignore: true)
   $OpenGraphInfoCopyWith<OpenGraphInfo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TwitterCardsInfoCopyWith<$Res>
+    implements $PageInfoCopyWith<$Res> {
+  factory $TwitterCardsInfoCopyWith(
+          TwitterCardsInfo value, $Res Function(TwitterCardsInfo) then) =
+      _$TwitterCardsInfoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String card,
+      String? site,
+      String? siteId,
+      String? creator,
+      String? creatorId,
+      String? description,
+      String? title,
+      String? image,
+      String? altImage,
+      String? player,
+      int? playerHeight,
+      int? playerWidth,
+      String? playerStream,
+      String? iphoneAppName,
+      String? iphoneUrl,
+      String? ipadAppName,
+      String? appStoreAppId,
+      String? ipadUrl,
+      String? androidAppName,
+      String? playStoreAppId,
+      String? playUrl});
+}
+
+/// @nodoc
+class _$TwitterCardsInfoCopyWithImpl<$Res> extends _$PageInfoCopyWithImpl<$Res>
+    implements $TwitterCardsInfoCopyWith<$Res> {
+  _$TwitterCardsInfoCopyWithImpl(
+      TwitterCardsInfo _value, $Res Function(TwitterCardsInfo) _then)
+      : super(_value, (v) => _then(v as TwitterCardsInfo));
+
+  @override
+  TwitterCardsInfo get _value => super._value as TwitterCardsInfo;
+
+  @override
+  $Res call({
+    Object? card = freezed,
+    Object? site = freezed,
+    Object? siteId = freezed,
+    Object? creator = freezed,
+    Object? creatorId = freezed,
+    Object? description = freezed,
+    Object? title = freezed,
+    Object? image = freezed,
+    Object? altImage = freezed,
+    Object? player = freezed,
+    Object? playerHeight = freezed,
+    Object? playerWidth = freezed,
+    Object? playerStream = freezed,
+    Object? iphoneAppName = freezed,
+    Object? iphoneUrl = freezed,
+    Object? ipadAppName = freezed,
+    Object? appStoreAppId = freezed,
+    Object? ipadUrl = freezed,
+    Object? androidAppName = freezed,
+    Object? playStoreAppId = freezed,
+    Object? playUrl = freezed,
+  }) {
+    return _then(TwitterCardsInfo(
+      card: card == freezed
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as String,
+      site: site == freezed
+          ? _value.site
+          : site // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siteId: siteId == freezed
+          ? _value.siteId
+          : siteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      creator: creator == freezed
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as String?,
+      creatorId: creatorId == freezed
+          ? _value.creatorId
+          : creatorId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      altImage: altImage == freezed
+          ? _value.altImage
+          : altImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      player: player == freezed
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as String?,
+      playerHeight: playerHeight == freezed
+          ? _value.playerHeight
+          : playerHeight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      playerWidth: playerWidth == freezed
+          ? _value.playerWidth
+          : playerWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      playerStream: playerStream == freezed
+          ? _value.playerStream
+          : playerStream // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iphoneAppName: iphoneAppName == freezed
+          ? _value.iphoneAppName
+          : iphoneAppName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iphoneUrl: iphoneUrl == freezed
+          ? _value.iphoneUrl
+          : iphoneUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ipadAppName: ipadAppName == freezed
+          ? _value.ipadAppName
+          : ipadAppName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      appStoreAppId: appStoreAppId == freezed
+          ? _value.appStoreAppId
+          : appStoreAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ipadUrl: ipadUrl == freezed
+          ? _value.ipadUrl
+          : ipadUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      androidAppName: androidAppName == freezed
+          ? _value.androidAppName
+          : androidAppName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      playStoreAppId: playStoreAppId == freezed
+          ? _value.playStoreAppId
+          : playStoreAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      playUrl: playUrl == freezed
+          ? _value.playUrl
+          : playUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+@Implements(TwitterCardsMetadata)
+class _$TwitterCardsInfo implements TwitterCardsInfo {
+  const _$TwitterCardsInfo(
+      {required this.card,
+      required this.site,
+      required this.siteId,
+      required this.creator,
+      required this.creatorId,
+      required this.description,
+      required this.title,
+      required this.image,
+      required this.altImage,
+      required this.player,
+      required this.playerHeight,
+      required this.playerWidth,
+      required this.playerStream,
+      required this.iphoneAppName,
+      required this.iphoneUrl,
+      required this.ipadAppName,
+      required this.appStoreAppId,
+      required this.ipadUrl,
+      required this.androidAppName,
+      required this.playStoreAppId,
+      required this.playUrl});
+
+  factory _$TwitterCardsInfo.fromJson(Map<String, dynamic> json) =>
+      _$_$TwitterCardsInfoFromJson(json);
+
+  @override
+  final String card;
+  @override
+  final String? site;
+  @override
+  final String? siteId;
+  @override
+  final String? creator;
+  @override
+  final String? creatorId;
+  @override
+  final String? description;
+  @override
+  final String? title;
+  @override
+  final String? image;
+  @override
+  final String? altImage;
+  @override
+  final String? player;
+  @override
+  final int? playerHeight;
+  @override
+  final int? playerWidth;
+  @override
+  final String? playerStream;
+  @override
+  final String? iphoneAppName;
+  @override
+  final String? iphoneUrl;
+  @override
+  final String? ipadAppName;
+  @override
+  final String? appStoreAppId;
+  @override
+  final String? ipadUrl;
+  @override
+  final String? androidAppName;
+  @override
+  final String? playStoreAppId;
+  @override
+  final String? playUrl;
+
+  @override
+  String toString() {
+    return 'PageInfo.twitterCards(card: $card, site: $site, siteId: $siteId, creator: $creator, creatorId: $creatorId, description: $description, title: $title, image: $image, altImage: $altImage, player: $player, playerHeight: $playerHeight, playerWidth: $playerWidth, playerStream: $playerStream, iphoneAppName: $iphoneAppName, iphoneUrl: $iphoneUrl, ipadAppName: $ipadAppName, appStoreAppId: $appStoreAppId, ipadUrl: $ipadUrl, androidAppName: $androidAppName, playStoreAppId: $playStoreAppId, playUrl: $playUrl)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is TwitterCardsInfo &&
+            (identical(other.card, card) ||
+                const DeepCollectionEquality().equals(other.card, card)) &&
+            (identical(other.site, site) ||
+                const DeepCollectionEquality().equals(other.site, site)) &&
+            (identical(other.siteId, siteId) ||
+                const DeepCollectionEquality().equals(other.siteId, siteId)) &&
+            (identical(other.creator, creator) ||
+                const DeepCollectionEquality()
+                    .equals(other.creator, creator)) &&
+            (identical(other.creatorId, creatorId) ||
+                const DeepCollectionEquality()
+                    .equals(other.creatorId, creatorId)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
+            (identical(other.altImage, altImage) ||
+                const DeepCollectionEquality()
+                    .equals(other.altImage, altImage)) &&
+            (identical(other.player, player) ||
+                const DeepCollectionEquality().equals(other.player, player)) &&
+            (identical(other.playerHeight, playerHeight) ||
+                const DeepCollectionEquality()
+                    .equals(other.playerHeight, playerHeight)) &&
+            (identical(other.playerWidth, playerWidth) ||
+                const DeepCollectionEquality()
+                    .equals(other.playerWidth, playerWidth)) &&
+            (identical(other.playerStream, playerStream) ||
+                const DeepCollectionEquality()
+                    .equals(other.playerStream, playerStream)) &&
+            (identical(other.iphoneAppName, iphoneAppName) ||
+                const DeepCollectionEquality()
+                    .equals(other.iphoneAppName, iphoneAppName)) &&
+            (identical(other.iphoneUrl, iphoneUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.iphoneUrl, iphoneUrl)) &&
+            (identical(other.ipadAppName, ipadAppName) ||
+                const DeepCollectionEquality()
+                    .equals(other.ipadAppName, ipadAppName)) &&
+            (identical(other.appStoreAppId, appStoreAppId) ||
+                const DeepCollectionEquality()
+                    .equals(other.appStoreAppId, appStoreAppId)) &&
+            (identical(other.ipadUrl, ipadUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.ipadUrl, ipadUrl)) &&
+            (identical(other.androidAppName, androidAppName) ||
+                const DeepCollectionEquality()
+                    .equals(other.androidAppName, androidAppName)) &&
+            (identical(other.playStoreAppId, playStoreAppId) ||
+                const DeepCollectionEquality()
+                    .equals(other.playStoreAppId, playStoreAppId)) &&
+            (identical(other.playUrl, playUrl) ||
+                const DeepCollectionEquality().equals(other.playUrl, playUrl)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(card) ^
+      const DeepCollectionEquality().hash(site) ^
+      const DeepCollectionEquality().hash(siteId) ^
+      const DeepCollectionEquality().hash(creator) ^
+      const DeepCollectionEquality().hash(creatorId) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(image) ^
+      const DeepCollectionEquality().hash(altImage) ^
+      const DeepCollectionEquality().hash(player) ^
+      const DeepCollectionEquality().hash(playerHeight) ^
+      const DeepCollectionEquality().hash(playerWidth) ^
+      const DeepCollectionEquality().hash(playerStream) ^
+      const DeepCollectionEquality().hash(iphoneAppName) ^
+      const DeepCollectionEquality().hash(iphoneUrl) ^
+      const DeepCollectionEquality().hash(ipadAppName) ^
+      const DeepCollectionEquality().hash(appStoreAppId) ^
+      const DeepCollectionEquality().hash(ipadUrl) ^
+      const DeepCollectionEquality().hash(androidAppName) ^
+      const DeepCollectionEquality().hash(playStoreAppId) ^
+      const DeepCollectionEquality().hash(playUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  $TwitterCardsInfoCopyWith<TwitterCardsInfo> get copyWith =>
+      _$TwitterCardsInfoCopyWithImpl<TwitterCardsInfo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String title,
+            String type,
+            String image,
+            String? url,
+            String? audio,
+            String? description,
+            String? determiner,
+            String? locale,
+            String? alternateLocale,
+            String? siteName,
+            String? video,
+            OpenGraphImage? imageData,
+            OpenGraphVideo? videoData,
+            OpenGraphAudio? audioData)
+        openGraph,
+    required TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)
+        twitterCards,
+    required TResult Function(String? title, String? content, String? url,
+            String? image, String? description)
+        amazon,
+  }) {
+    return twitterCards(
+        card,
+        site,
+        siteId,
+        creator,
+        creatorId,
+        description,
+        title,
+        image,
+        altImage,
+        player,
+        playerHeight,
+        playerWidth,
+        playerStream,
+        iphoneAppName,
+        iphoneUrl,
+        ipadAppName,
+        appStoreAppId,
+        ipadUrl,
+        androidAppName,
+        playStoreAppId,
+        playUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String title,
+            String type,
+            String image,
+            String? url,
+            String? audio,
+            String? description,
+            String? determiner,
+            String? locale,
+            String? alternateLocale,
+            String? siteName,
+            String? video,
+            OpenGraphImage? imageData,
+            OpenGraphVideo? videoData,
+            OpenGraphAudio? audioData)?
+        openGraph,
+    TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)?
+        twitterCards,
+    TResult Function(String? title, String? content, String? url, String? image,
+            String? description)?
+        amazon,
+    required TResult orElse(),
+  }) {
+    if (twitterCards != null) {
+      return twitterCards(
+          card,
+          site,
+          siteId,
+          creator,
+          creatorId,
+          description,
+          title,
+          image,
+          altImage,
+          player,
+          playerHeight,
+          playerWidth,
+          playerStream,
+          iphoneAppName,
+          iphoneUrl,
+          ipadAppName,
+          appStoreAppId,
+          ipadUrl,
+          androidAppName,
+          playStoreAppId,
+          playUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenGraphInfo value) openGraph,
+    required TResult Function(TwitterCardsInfo value) twitterCards,
+    required TResult Function(AmazonInfo value) amazon,
+  }) {
+    return twitterCards(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenGraphInfo value)? openGraph,
+    TResult Function(TwitterCardsInfo value)? twitterCards,
+    TResult Function(AmazonInfo value)? amazon,
+    required TResult orElse(),
+  }) {
+    if (twitterCards != null) {
+      return twitterCards(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$TwitterCardsInfoToJson(this)..['runtimeType'] = 'twitterCards';
+  }
+}
+
+abstract class TwitterCardsInfo implements PageInfo, TwitterCardsMetadata {
+  const factory TwitterCardsInfo(
+      {required String card,
+      required String? site,
+      required String? siteId,
+      required String? creator,
+      required String? creatorId,
+      required String? description,
+      required String? title,
+      required String? image,
+      required String? altImage,
+      required String? player,
+      required int? playerHeight,
+      required int? playerWidth,
+      required String? playerStream,
+      required String? iphoneAppName,
+      required String? iphoneUrl,
+      required String? ipadAppName,
+      required String? appStoreAppId,
+      required String? ipadUrl,
+      required String? androidAppName,
+      required String? playStoreAppId,
+      required String? playUrl}) = _$TwitterCardsInfo;
+
+  factory TwitterCardsInfo.fromJson(Map<String, dynamic> json) =
+      _$TwitterCardsInfo.fromJson;
+
+  String get card => throw _privateConstructorUsedError;
+  String? get site => throw _privateConstructorUsedError;
+  String? get siteId => throw _privateConstructorUsedError;
+  String? get creator => throw _privateConstructorUsedError;
+  String? get creatorId => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get altImage => throw _privateConstructorUsedError;
+  String? get player => throw _privateConstructorUsedError;
+  int? get playerHeight => throw _privateConstructorUsedError;
+  int? get playerWidth => throw _privateConstructorUsedError;
+  String? get playerStream => throw _privateConstructorUsedError;
+  String? get iphoneAppName => throw _privateConstructorUsedError;
+  String? get iphoneUrl => throw _privateConstructorUsedError;
+  String? get ipadAppName => throw _privateConstructorUsedError;
+  String? get appStoreAppId => throw _privateConstructorUsedError;
+  String? get ipadUrl => throw _privateConstructorUsedError;
+  String? get androidAppName => throw _privateConstructorUsedError;
+  String? get playStoreAppId => throw _privateConstructorUsedError;
+  String? get playUrl => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  $TwitterCardsInfoCopyWith<TwitterCardsInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -851,18 +1439,32 @@ class _$AmazonInfo implements AmazonInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)
         openGraph,
+    required TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)
+        twitterCards,
     required TResult Function(String? title, String? content, String? url,
             String? image, String? description)
         amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
   }) {
     return amazon(title, content, url, image, description);
   }
@@ -886,18 +1488,32 @@ class _$AmazonInfo implements AmazonInfo {
             OpenGraphVideo? videoData,
             OpenGraphAudio? audioData)?
         openGraph,
+    TResult Function(
+            String card,
+            String? site,
+            String? siteId,
+            String? creator,
+            String? creatorId,
+            String? description,
+            String? title,
+            String? image,
+            String? altImage,
+            String? player,
+            int? playerHeight,
+            int? playerWidth,
+            String? playerStream,
+            String? iphoneAppName,
+            String? iphoneUrl,
+            String? ipadAppName,
+            String? appStoreAppId,
+            String? ipadUrl,
+            String? androidAppName,
+            String? playStoreAppId,
+            String? playUrl)?
+        twitterCards,
     TResult Function(String? title, String? content, String? url, String? image,
             String? description)?
         amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
     required TResult orElse(),
   }) {
     if (amazon != null) {
@@ -910,10 +1526,8 @@ class _$AmazonInfo implements AmazonInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OpenGraphInfo value) openGraph,
+    required TResult Function(TwitterCardsInfo value) twitterCards,
     required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
   }) {
     return amazon(this);
   }
@@ -922,10 +1536,8 @@ class _$AmazonInfo implements AmazonInfo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OpenGraphInfo value)? openGraph,
+    TResult Function(TwitterCardsInfo value)? twitterCards,
     TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
     required TResult orElse(),
   }) {
     if (amazon != null) {
@@ -953,7 +1565,6 @@ abstract class AmazonInfo implements PageInfo, BasicMetadata {
 
   String? get title => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
-  @override
   String? get url => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   @override
@@ -961,787 +1572,5 @@ abstract class AmazonInfo implements PageInfo, BasicMetadata {
   @override
   @JsonKey(ignore: true)
   $AmazonInfoCopyWith<AmazonInfo> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BoardGameGeekInfoCopyWith<$Res>
-    implements $PageInfoCopyWith<$Res> {
-  factory $BoardGameGeekInfoCopyWith(
-          BoardGameGeekInfo value, $Res Function(BoardGameGeekInfo) then) =
-      _$BoardGameGeekInfoCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String? title,
-      String? content,
-      String? url,
-      String? image,
-      String? description});
-}
-
-/// @nodoc
-class _$BoardGameGeekInfoCopyWithImpl<$Res> extends _$PageInfoCopyWithImpl<$Res>
-    implements $BoardGameGeekInfoCopyWith<$Res> {
-  _$BoardGameGeekInfoCopyWithImpl(
-      BoardGameGeekInfo _value, $Res Function(BoardGameGeekInfo) _then)
-      : super(_value, (v) => _then(v as BoardGameGeekInfo));
-
-  @override
-  BoardGameGeekInfo get _value => super._value as BoardGameGeekInfo;
-
-  @override
-  $Res call({
-    Object? title = freezed,
-    Object? content = freezed,
-    Object? url = freezed,
-    Object? image = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(BoardGameGeekInfo(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@Implements(BasicMetadata)
-class _$BoardGameGeekInfo implements BoardGameGeekInfo {
-  const _$BoardGameGeekInfo(
-      {required this.title,
-      required this.content,
-      required this.url,
-      required this.image,
-      required this.description});
-
-  factory _$BoardGameGeekInfo.fromJson(Map<String, dynamic> json) =>
-      _$_$BoardGameGeekInfoFromJson(json);
-
-  @override
-  final String? title;
-  @override
-  final String? content;
-  @override
-  final String? url;
-  @override
-  final String? image;
-  @override
-  final String? description;
-
-  @override
-  String toString() {
-    return 'PageInfo.boardGameGeek(title: $title, content: $content, url: $url, image: $image, description: $description)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is BoardGameGeekInfo &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(description);
-
-  @JsonKey(ignore: true)
-  @override
-  $BoardGameGeekInfoCopyWith<BoardGameGeekInfo> get copyWith =>
-      _$BoardGameGeekInfoCopyWithImpl<BoardGameGeekInfo>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)
-        openGraph,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
-  }) {
-    return boardGameGeek(title, content, url, image, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)?
-        openGraph,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
-    required TResult orElse(),
-  }) {
-    if (boardGameGeek != null) {
-      return boardGameGeek(title, content, url, image, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(OpenGraphInfo value) openGraph,
-    required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
-  }) {
-    return boardGameGeek(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(OpenGraphInfo value)? openGraph,
-    TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
-    required TResult orElse(),
-  }) {
-    if (boardGameGeek != null) {
-      return boardGameGeek(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$BoardGameGeekInfoToJson(this)..['runtimeType'] = 'boardGameGeek';
-  }
-}
-
-abstract class BoardGameGeekInfo implements PageInfo, BasicMetadata {
-  const factory BoardGameGeekInfo(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description}) = _$BoardGameGeekInfo;
-
-  factory BoardGameGeekInfo.fromJson(Map<String, dynamic> json) =
-      _$BoardGameGeekInfo.fromJson;
-
-  String? get title => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
-  @override
-  String? get url => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  @override
-  String? get description => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $BoardGameGeekInfoCopyWith<BoardGameGeekInfo> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TwitterInfoCopyWith<$Res> implements $PageInfoCopyWith<$Res> {
-  factory $TwitterInfoCopyWith(
-          TwitterInfo value, $Res Function(TwitterInfo) then) =
-      _$TwitterInfoCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String? title,
-      String? content,
-      String? url,
-      String? image,
-      String? description,
-      List<String>? video});
-}
-
-/// @nodoc
-class _$TwitterInfoCopyWithImpl<$Res> extends _$PageInfoCopyWithImpl<$Res>
-    implements $TwitterInfoCopyWith<$Res> {
-  _$TwitterInfoCopyWithImpl(
-      TwitterInfo _value, $Res Function(TwitterInfo) _then)
-      : super(_value, (v) => _then(v as TwitterInfo));
-
-  @override
-  TwitterInfo get _value => super._value as TwitterInfo;
-
-  @override
-  $Res call({
-    Object? title = freezed,
-    Object? content = freezed,
-    Object? url = freezed,
-    Object? image = freezed,
-    Object? description = freezed,
-    Object? video = freezed,
-  }) {
-    return _then(TwitterInfo(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      video: video == freezed
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@Implements(BasicMetadata)
-class _$TwitterInfo implements TwitterInfo {
-  const _$TwitterInfo(
-      {required this.title,
-      required this.content,
-      required this.url,
-      required this.image,
-      required this.description,
-      required this.video});
-
-  factory _$TwitterInfo.fromJson(Map<String, dynamic> json) =>
-      _$_$TwitterInfoFromJson(json);
-
-  @override
-  final String? title;
-  @override
-  final String? content;
-  @override
-  final String? url;
-  @override
-  final String? image;
-  @override
-  final String? description;
-  @override
-  final List<String>? video;
-
-  @override
-  String toString() {
-    return 'PageInfo.twitter(title: $title, content: $content, url: $url, image: $image, description: $description, video: $video)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is TwitterInfo &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.video, video) ||
-                const DeepCollectionEquality().equals(other.video, video)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(video);
-
-  @JsonKey(ignore: true)
-  @override
-  $TwitterInfoCopyWith<TwitterInfo> get copyWith =>
-      _$TwitterInfoCopyWithImpl<TwitterInfo>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)
-        openGraph,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
-  }) {
-    return twitter(title, content, url, image, description, video);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)?
-        openGraph,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
-    required TResult orElse(),
-  }) {
-    if (twitter != null) {
-      return twitter(title, content, url, image, description, video);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(OpenGraphInfo value) openGraph,
-    required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
-  }) {
-    return twitter(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(OpenGraphInfo value)? openGraph,
-    TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
-    required TResult orElse(),
-  }) {
-    if (twitter != null) {
-      return twitter(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$TwitterInfoToJson(this)..['runtimeType'] = 'twitter';
-  }
-}
-
-abstract class TwitterInfo implements PageInfo, BasicMetadata {
-  const factory TwitterInfo(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description,
-      required List<String>? video}) = _$TwitterInfo;
-
-  factory TwitterInfo.fromJson(Map<String, dynamic> json) =
-      _$TwitterInfo.fromJson;
-
-  String? get title => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
-  @override
-  String? get url => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  @override
-  String? get description => throw _privateConstructorUsedError;
-  List<String>? get video => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $TwitterInfoCopyWith<TwitterInfo> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InstagramInfoCopyWith<$Res> implements $PageInfoCopyWith<$Res> {
-  factory $InstagramInfoCopyWith(
-          InstagramInfo value, $Res Function(InstagramInfo) then) =
-      _$InstagramInfoCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String? title,
-      String? content,
-      String? url,
-      String? image,
-      String? description,
-      List<String>? video});
-}
-
-/// @nodoc
-class _$InstagramInfoCopyWithImpl<$Res> extends _$PageInfoCopyWithImpl<$Res>
-    implements $InstagramInfoCopyWith<$Res> {
-  _$InstagramInfoCopyWithImpl(
-      InstagramInfo _value, $Res Function(InstagramInfo) _then)
-      : super(_value, (v) => _then(v as InstagramInfo));
-
-  @override
-  InstagramInfo get _value => super._value as InstagramInfo;
-
-  @override
-  $Res call({
-    Object? title = freezed,
-    Object? content = freezed,
-    Object? url = freezed,
-    Object? image = freezed,
-    Object? description = freezed,
-    Object? video = freezed,
-  }) {
-    return _then(InstagramInfo(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String?,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      video: video == freezed
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@Implements(BasicMetadata)
-class _$InstagramInfo implements InstagramInfo {
-  const _$InstagramInfo(
-      {required this.title,
-      required this.content,
-      required this.url,
-      required this.image,
-      required this.description,
-      required this.video});
-
-  factory _$InstagramInfo.fromJson(Map<String, dynamic> json) =>
-      _$_$InstagramInfoFromJson(json);
-
-  @override
-  final String? title;
-  @override
-  final String? content;
-  @override
-  final String? url;
-  @override
-  final String? image;
-  @override
-  final String? description;
-  @override
-  final List<String>? video;
-
-  @override
-  String toString() {
-    return 'PageInfo.instagram(title: $title, content: $content, url: $url, image: $image, description: $description, video: $video)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is InstagramInfo &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.video, video) ||
-                const DeepCollectionEquality().equals(other.video, video)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(video);
-
-  @JsonKey(ignore: true)
-  @override
-  $InstagramInfoCopyWith<InstagramInfo> get copyWith =>
-      _$InstagramInfoCopyWithImpl<InstagramInfo>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)
-        openGraph,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        amazon,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description)
-        boardGameGeek,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        twitter,
-    required TResult Function(String? title, String? content, String? url,
-            String? image, String? description, List<String>? video)
-        instagram,
-  }) {
-    return instagram(title, content, url, image, description, video);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String title,
-            String type,
-            String image,
-            String? url,
-            String? audio,
-            String? description,
-            String? determiner,
-            String? locale,
-            String? alternateLocale,
-            String? siteName,
-            String? video,
-            OpenGraphImage? imageData,
-            OpenGraphVideo? videoData,
-            OpenGraphAudio? audioData)?
-        openGraph,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        amazon,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description)?
-        boardGameGeek,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        twitter,
-    TResult Function(String? title, String? content, String? url, String? image,
-            String? description, List<String>? video)?
-        instagram,
-    required TResult orElse(),
-  }) {
-    if (instagram != null) {
-      return instagram(title, content, url, image, description, video);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(OpenGraphInfo value) openGraph,
-    required TResult Function(AmazonInfo value) amazon,
-    required TResult Function(BoardGameGeekInfo value) boardGameGeek,
-    required TResult Function(TwitterInfo value) twitter,
-    required TResult Function(InstagramInfo value) instagram,
-  }) {
-    return instagram(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(OpenGraphInfo value)? openGraph,
-    TResult Function(AmazonInfo value)? amazon,
-    TResult Function(BoardGameGeekInfo value)? boardGameGeek,
-    TResult Function(TwitterInfo value)? twitter,
-    TResult Function(InstagramInfo value)? instagram,
-    required TResult orElse(),
-  }) {
-    if (instagram != null) {
-      return instagram(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$InstagramInfoToJson(this)..['runtimeType'] = 'instagram';
-  }
-}
-
-abstract class InstagramInfo implements PageInfo, BasicMetadata {
-  const factory InstagramInfo(
-      {required String? title,
-      required String? content,
-      required String? url,
-      required String? image,
-      required String? description,
-      required List<String>? video}) = _$InstagramInfo;
-
-  factory InstagramInfo.fromJson(Map<String, dynamic> json) =
-      _$InstagramInfo.fromJson;
-
-  String? get title => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
-  @override
-  String? get url => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  @override
-  String? get description => throw _privateConstructorUsedError;
-  List<String>? get video => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  $InstagramInfoCopyWith<InstagramInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

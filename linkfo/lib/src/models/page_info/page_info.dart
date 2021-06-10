@@ -4,6 +4,7 @@ import 'package:linkfo/src/models/open_graph.dart';
 import 'package:linkfo/src/models/open_graph_audio/open_graph_audio.dart';
 import 'package:linkfo/src/models/open_graph_image/open_graph_image.dart';
 import 'package:linkfo/src/models/open_graph_video/open_graph_video.dart';
+import 'package:linkfo/src/models/twitter_cards.dart';
 
 part 'page_info.freezed.dart';
 part 'page_info.g.dart';
@@ -29,6 +30,31 @@ class PageInfo with _$PageInfo {
     required OpenGraphAudio? audioData,
   }) = OpenGraphInfo;
 
+  @Implements(TwitterCardsMetadata)
+  const factory PageInfo.twitterCards({
+    required String card,
+    required String? site,
+    required String? siteId,
+    required String? creator,
+    required String? creatorId,
+    required String? description,
+    required String? title,
+    required String? image,
+    required String? altImage,
+    required String? player,
+    required int? playerHeight,
+    required int? playerWidth,
+    required String? playerStream,
+    required String? iphoneAppName,
+    required String? iphoneUrl,
+    required String? ipadAppName,
+    required String? appStoreAppId,
+    required String? ipadUrl,
+    required String? androidAppName,
+    required String? playStoreAppId,
+    required String? playUrl,
+  }) = TwitterCardsInfo;
+
   @Implements(BasicMetadata)
   const factory PageInfo.amazon({
     required String? title,
@@ -37,35 +63,6 @@ class PageInfo with _$PageInfo {
     required String? image,
     required String? description,
   }) = AmazonInfo;
-
-  @Implements(BasicMetadata)
-  const factory PageInfo.boardGameGeek({
-    required String? title,
-    required String? content,
-    required String? url,
-    required String? image,
-    required String? description,
-  }) = BoardGameGeekInfo;
-
-  @Implements(BasicMetadata)
-  const factory PageInfo.twitter({
-    required String? title,
-    required String? content,
-    required String? url,
-    required String? image,
-    required String? description,
-    required List<String>? video,
-  }) = TwitterInfo;
-
-  @Implements(BasicMetadata)
-  const factory PageInfo.instagram({
-    required String? title,
-    required String? content,
-    required String? url,
-    required String? image,
-    required String? description,
-    required List<String>? video,
-  }) = InstagramInfo;
 
   factory PageInfo.fromJson(Map<String, dynamic> json) =>
       _$PageInfoFromJson(json);

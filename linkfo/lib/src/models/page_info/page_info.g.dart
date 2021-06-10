@@ -49,6 +49,57 @@ Map<String, dynamic> _$_$OpenGraphInfoToJson(_$OpenGraphInfo instance) =>
       'audioData': instance.audioData,
     };
 
+_$TwitterCardsInfo _$_$TwitterCardsInfoFromJson(Map<String, dynamic> json) {
+  return _$TwitterCardsInfo(
+    card: json['card'] as String,
+    site: json['site'] as String?,
+    siteId: json['siteId'] as String?,
+    creator: json['creator'] as String?,
+    creatorId: json['creatorId'] as String?,
+    description: json['description'] as String?,
+    title: json['title'] as String?,
+    image: json['image'] as String?,
+    altImage: json['altImage'] as String?,
+    player: json['player'] as String?,
+    playerHeight: json['playerHeight'] as int?,
+    playerWidth: json['playerWidth'] as int?,
+    playerStream: json['playerStream'] as String?,
+    iphoneAppName: json['iphoneAppName'] as String?,
+    iphoneUrl: json['iphoneUrl'] as String?,
+    ipadAppName: json['ipadAppName'] as String?,
+    appStoreAppId: json['appStoreAppId'] as String?,
+    ipadUrl: json['ipadUrl'] as String?,
+    androidAppName: json['androidAppName'] as String?,
+    playStoreAppId: json['playStoreAppId'] as String?,
+    playUrl: json['playUrl'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$TwitterCardsInfoToJson(_$TwitterCardsInfo instance) =>
+    <String, dynamic>{
+      'card': instance.card,
+      'site': instance.site,
+      'siteId': instance.siteId,
+      'creator': instance.creator,
+      'creatorId': instance.creatorId,
+      'description': instance.description,
+      'title': instance.title,
+      'image': instance.image,
+      'altImage': instance.altImage,
+      'player': instance.player,
+      'playerHeight': instance.playerHeight,
+      'playerWidth': instance.playerWidth,
+      'playerStream': instance.playerStream,
+      'iphoneAppName': instance.iphoneAppName,
+      'iphoneUrl': instance.iphoneUrl,
+      'ipadAppName': instance.ipadAppName,
+      'appStoreAppId': instance.appStoreAppId,
+      'ipadUrl': instance.ipadUrl,
+      'androidAppName': instance.androidAppName,
+      'playStoreAppId': instance.playStoreAppId,
+      'playUrl': instance.playUrl,
+    };
+
 _$AmazonInfo _$_$AmazonInfoFromJson(Map<String, dynamic> json) {
   return _$AmazonInfo(
     title: json['title'] as String?,
@@ -66,66 +117,4 @@ Map<String, dynamic> _$_$AmazonInfoToJson(_$AmazonInfo instance) =>
       'url': instance.url,
       'image': instance.image,
       'description': instance.description,
-    };
-
-_$BoardGameGeekInfo _$_$BoardGameGeekInfoFromJson(Map<String, dynamic> json) {
-  return _$BoardGameGeekInfo(
-    title: json['title'] as String?,
-    content: json['content'] as String?,
-    url: json['url'] as String?,
-    image: json['image'] as String?,
-    description: json['description'] as String?,
-  );
-}
-
-Map<String, dynamic> _$_$BoardGameGeekInfoToJson(
-        _$BoardGameGeekInfo instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
-      'url': instance.url,
-      'image': instance.image,
-      'description': instance.description,
-    };
-
-_$TwitterInfo _$_$TwitterInfoFromJson(Map<String, dynamic> json) {
-  return _$TwitterInfo(
-    title: json['title'] as String?,
-    content: json['content'] as String?,
-    url: json['url'] as String?,
-    image: json['image'] as String?,
-    description: json['description'] as String?,
-    video: (json['video'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  );
-}
-
-Map<String, dynamic> _$_$TwitterInfoToJson(_$TwitterInfo instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
-      'url': instance.url,
-      'image': instance.image,
-      'description': instance.description,
-      'video': instance.video,
-    };
-
-_$InstagramInfo _$_$InstagramInfoFromJson(Map<String, dynamic> json) {
-  return _$InstagramInfo(
-    title: json['title'] as String?,
-    content: json['content'] as String?,
-    url: json['url'] as String?,
-    image: json['image'] as String?,
-    description: json['description'] as String?,
-    video: (json['video'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  );
-}
-
-Map<String, dynamic> _$_$InstagramInfoToJson(_$InstagramInfo instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
-      'url': instance.url,
-      'image': instance.image,
-      'description': instance.description,
-      'video': instance.video,
     };
