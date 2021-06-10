@@ -19,7 +19,7 @@ mixin ScrapingUtils on WithDoc {
     return _regexImage.hasMatch(url);
   }
 
-  bool isValidVideoURL(src) {
+  bool isValidVideoURL(String src) {
     return _videoRegex.hasMatch(src);
   }
 

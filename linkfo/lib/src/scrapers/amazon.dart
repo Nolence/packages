@@ -17,10 +17,10 @@ class AmazonScraper extends Scraper {
 
   @override
   AmazonInfo scrape() {
-    final images = [
-      getDocAttrElement('.a-dynamic-image', 'data-old-hires'),
-      getDocAttrElement('.a-dynamic-image', 'src'),
-    ];
+    // final images = [
+    //   getDocAttrElement('.a-dynamic-image', 'data-old-hires'),
+    //   getDocAttrElement('.a-dynamic-image', 'src'),
+    // ];
 
     // final image = images
     //     .where((image) => image?.isNotEmpty ?? false)

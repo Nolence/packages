@@ -27,7 +27,6 @@ abstract class OpenGraphMetadata extends BasicMetadata {
   String get image;
 
   /// og:url - The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/"
-  @override
   String? get url;
 
   /// og:audio - A URL to an audio file to accompany this object.
