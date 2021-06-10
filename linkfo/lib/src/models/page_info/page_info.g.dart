@@ -51,7 +51,7 @@ Map<String, dynamic> _$_$OpenGraphInfoToJson(_$OpenGraphInfo instance) =>
 
 _$TwitterCardsInfo _$_$TwitterCardsInfoFromJson(Map<String, dynamic> json) {
   return _$TwitterCardsInfo(
-    card: json['card'] as String,
+    card: json['card'] as String?,
     site: json['site'] as String?,
     siteId: json['siteId'] as String?,
     creator: json['creator'] as String?,

@@ -32,7 +32,7 @@ class PageInfo with _$PageInfo {
 
   @Implements(TwitterCardsMetadata)
   const factory PageInfo.twitterCards({
-    required String card,
+    required String? card,
     required String? site,
     required String? siteId,
     required String? creator,

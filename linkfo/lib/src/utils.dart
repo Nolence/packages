@@ -46,15 +46,20 @@ mixin ScrapingUtils on WithDoc {
   String? getProperty(
     String? property, {
     String tag = 'meta',
-    String attribute = 'property',
+    List<String> attributes = const ['property', 'name'],
     String key = 'content',
   }) {
-    return doc
-        .getElementsByTagName(tag)
-        .firstWhereOrNull(
-          (element) => element.attributes[attribute] == property,
-        )
-        ?.attributes[key];
+    return doc.getElementsByTagName(tag).firstWhereOrNull(
+      (element) {
+        for (final attr in attributes) {
+          if (element.attributes[attr] == property) {
+            return true;
+          }
+        }
+
+        return false;
+      },
+    )?.attributes[key];
   }
 
   String? getDocAttrElement(String query, String attr) {

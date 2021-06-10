@@ -11,7 +11,7 @@ abstract class TwitterCardsMetadata extends BasicMetadata {
   /// twitter:card is absent, then a summary card may be rendered.
   ///
   /// types: summary, summary_large_image, app
-  String get card;
+  String? get card;
 
   /// twitter:site
   ///

@@ -64,7 +64,7 @@ class _$PageInfoTearOff {
   }
 
   TwitterCardsInfo twitterCards(
-      {required String card,
+      {required String? card,
       required String? site,
       required String? siteId,
       required String? creator,
@@ -156,7 +156,7 @@ mixin _$PageInfo {
             OpenGraphAudio? audioData)
         openGraph,
     required TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -202,7 +202,7 @@ mixin _$PageInfo {
             OpenGraphAudio? audioData)?
         openGraph,
     TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -568,7 +568,7 @@ class _$OpenGraphInfo implements OpenGraphInfo {
             OpenGraphAudio? audioData)
         openGraph,
     required TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -631,7 +631,7 @@ class _$OpenGraphInfo implements OpenGraphInfo {
             OpenGraphAudio? audioData)?
         openGraph,
     TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -757,7 +757,7 @@ abstract class $TwitterCardsInfoCopyWith<$Res>
       _$TwitterCardsInfoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String card,
+      {String? card,
       String? site,
       String? siteId,
       String? creator,
@@ -818,7 +818,7 @@ class _$TwitterCardsInfoCopyWithImpl<$Res> extends _$PageInfoCopyWithImpl<$Res>
       card: card == freezed
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       site: site == freezed
           ? _value.site
           : site // ignore: cast_nullable_to_non_nullable
@@ -934,7 +934,7 @@ class _$TwitterCardsInfo implements TwitterCardsInfo {
       _$_$TwitterCardsInfoFromJson(json);
 
   @override
-  final String card;
+  final String? card;
   @override
   final String? site;
   @override
@@ -1093,7 +1093,7 @@ class _$TwitterCardsInfo implements TwitterCardsInfo {
             OpenGraphAudio? audioData)
         openGraph,
     required TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -1163,7 +1163,7 @@ class _$TwitterCardsInfo implements TwitterCardsInfo {
             OpenGraphAudio? audioData)?
         openGraph,
     TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -1249,7 +1249,7 @@ class _$TwitterCardsInfo implements TwitterCardsInfo {
 
 abstract class TwitterCardsInfo implements PageInfo, TwitterCardsMetadata {
   const factory TwitterCardsInfo(
-      {required String card,
+      {required String? card,
       required String? site,
       required String? siteId,
       required String? creator,
@@ -1274,7 +1274,7 @@ abstract class TwitterCardsInfo implements PageInfo, TwitterCardsMetadata {
   factory TwitterCardsInfo.fromJson(Map<String, dynamic> json) =
       _$TwitterCardsInfo.fromJson;
 
-  String get card => throw _privateConstructorUsedError;
+  String? get card => throw _privateConstructorUsedError;
   String? get site => throw _privateConstructorUsedError;
   String? get siteId => throw _privateConstructorUsedError;
   String? get creator => throw _privateConstructorUsedError;
@@ -1440,7 +1440,7 @@ class _$AmazonInfo implements AmazonInfo {
             OpenGraphAudio? audioData)
         openGraph,
     required TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,
@@ -1489,7 +1489,7 @@ class _$AmazonInfo implements AmazonInfo {
             OpenGraphAudio? audioData)?
         openGraph,
     TResult Function(
-            String card,
+            String? card,
             String? site,
             String? siteId,
             String? creator,

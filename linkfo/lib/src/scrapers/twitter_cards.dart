@@ -8,7 +8,7 @@ class TwitterCardsScraper extends Scraper {
   @override
   TwitterCardsInfo scrape() {
     return TwitterCardsInfo(
-      card: getProperty('twitter:card')!,
+      card: getProperty('twitter:card'),
       site: getProperty('twitter:title'),
       siteId: getProperty('twitter:site:id'),
       creator: getProperty('twitter:creator'),
