@@ -235,6 +235,7 @@ class _TreeState extends State<Tree> {
       return GestureDetector(
         onTap: widget.onBackgroundTap,
         child: ListView(
+          controller: widget.scrollController,
           padding: widget.padding,
           shrinkWrap: true,
           children: children,
