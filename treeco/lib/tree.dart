@@ -26,6 +26,8 @@ class Tree extends StatefulWidget {
 
   final IconData removeIcon;
 
+  final ScrollController? scrollController;
+
   final bool isEditable;
 
   final bool ignoreMissingChild;
@@ -44,6 +46,7 @@ class Tree extends StatefulWidget {
     required this.headerCrossAxisSpacing,
     required this.addIcon,
     required this.removeIcon,
+    required this.scrollController,
     this.layout = const [
       [null, null]
     ],
@@ -135,6 +138,7 @@ class _TreeState extends State<Tree> {
             onTap: widget.onBackgroundTap,
             // TODO: Await https://github.com/flutter/flutter/issues/41334
             child: ListView(
+              controller: widget.scrollController,
               cacheExtent: 600.0,
               shrinkWrap: true,
               padding: widget.padding.copyWith(
